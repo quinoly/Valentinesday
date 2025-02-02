@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Te Amo!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ff4d4d;
+      font-family: 'Cursive', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 5em;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .heart {
+      position: absolute;
+      font-size: 3em;
+      color: #fff;
+      animation: float 6s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <h1>¡TE AMO!</h1>
+
+  <script>
+    function createHearts() {
+      const body = document.querySelector('body');
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.innerHTML = '💖';
+        body.appendChild(heart);
+      }
+    }
+
+    createHearts();
+  </script>
+</body>
+</html>

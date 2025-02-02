@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Mi Amor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffcccc;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    .container {
+      text-align: center;
+    }
+    h1 {
+      color: #b30000;
+      font-size: 3em;
+    }
+    p {
+      font-size: 1.5em;
+      color: #800000;
+      margin-bottom: 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      grid-gap: 15px;
+      justify-content: center;
+    }
+    .card {
+      width: 100px;
+      height: 150px;
+      background-color: #fff;
+      border: 2px solid #b30000;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.2em;
+      color: transparent;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.1);
+    }
+    .card.revealed {
+      color: #b30000;
+      font-weight: bold;
+    }
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      color: #ff3366;
+      animation: float 5s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(-100px); opacity: 0.5; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¿Quieres ser mi San Valentín?</h1>
+    <p>Te amo más de lo que las palabras pueden decir. ¡Encuentra la carta que dice "Te Amo"!</p>
+    <div class="cards">
+      <div class="card" onclick="revealCard(this)">❤️</div>
+      <div class="card" onclick="revealCard(this)">🌹</div>
+      <div class="card" onclick="revealCard(this)">💕</div>
+      <div class="card" onclick="revealCard(this)">💌</div>
+      <div class="card" onclick="revealCard(this)">🎁</div>
+      <div class="card" onclick="revealCard(this)">💖</div>
+      <div class="card" onclick="revealCard(this)">💋</div>
+      <div class="card" onclick="revealCard(this, true)">Te Amo</div>
+    </div>
+  </div>
+
+  <script>
+    function revealCard(card, isLoveCard = false) {
+      card.classList.add('revealed');
+      if (isLoveCard) {
+        setTimeout(() => {
+          window.location.href = 'te_amo.html';
+        }, 1000);
+      }
+    }
+
+    function createHearts() {
+      const body = document.querySelector('body');
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.innerHTML = '❤️';
+        body.appendChild(heart);
+      }
+    }
+
+    createHearts();
+  </script>
+</body>
+</html>
